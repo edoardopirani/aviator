@@ -43,7 +43,7 @@ try:
 except Exception:
     pass
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 
 BUNDLED_CONFIG = Path(__file__).parent / "data"
 USER_CONFIG = Path(os.environ.get("XDG_CONFIG_HOME", Path.home() / ".config")) / "aviator"

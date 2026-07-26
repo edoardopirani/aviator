@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "aviator-flights"
-version = "1.0.0"
+version = "1.0.1"
 description = "Honest direct-flight price comparison across dates and nearby airports, straight from Google Flights."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -23,6 +23,12 @@ dependencies = [
     "fast-flights>=3.0",
     "PyYAML>=6.0",
     "python-dotenv>=1.0",
+    # primp is imported directly (the consent-cookie fetcher), so declare it
+    # explicitly rather than relying on fast-flights pulling it in.
+    "primp",
+    # fast-flights 3.0.2 imports typing_extensions without declaring it — a clean
+    # install fails at import time without this. Drop it once upstream declares it.
+    "typing_extensions",
 ]
 
 [project.urls]
