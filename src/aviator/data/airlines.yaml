@@ -1,0 +1,38 @@
+# Carry-on policy per airline, keyed by IATA carrier code.
+#
+# carryon_in_basic: does the CHEAPEST/basic fare include a full-size cabin bag
+# (the one that goes in the overhead bin), not just a small under-seat personal item?
+#   yes   — a large cabin bag is included in the basic fare
+#   no    — basic fare = under-seat item only; a cabin bag is a paid add-on
+#   paid  — same as "no" but priced as an optional extra you'd typically buy
+# carryon_fee: rough one-way cost (in your --currency) to add a cabin bag when not included.
+#
+# Used by --need-carryon to make fares apples-to-apples. Edit freely; the figures below
+# reflect European short-haul norms as of 2026 — verify at booking, policies drift.
+# PRs welcome, especially for non-European carriers.
+
+# ── Low-cost: large cabin bag (overhead) NOT in basic fare ──
+# All include a small under-seat "personal item" free; the fee below buys the
+# larger overhead cabin bag (via Priority / a large-cabin-bag add-on). Fees are
+# DYNAMIC (vary by route, date, and when you book) — carryon_fee is a typical
+# one-way online mid-value; ranges are the researched spread (verified Jul 2026).
+FR:  {name: Ryanair,        carryon_in_basic: no,  carryon_fee: 25}  # Priority incl. 10kg bag: £12–36 online
+W6:  {name: Wizz Air,       carryon_in_basic: no,  carryon_fee: 28}  # WIZZ Priority (trolley): ~€10–60 online (~£9–52), €55 airport
+U2:  {name: easyJet,        carryon_in_basic: no,  carryon_fee: 25}  # Large cabin bag add-on: from £5.99, typically £15–35; £48 at gate
+VY:  {name: Vueling,        carryon_in_basic: no,  carryon_fee: 25}  # estimate — not re-verified Jul 2026
+HV:  {name: Transavia,      carryon_in_basic: no,  carryon_fee: 25}  # estimate — not re-verified Jul 2026
+LS:  {name: Jet2,           carryon_in_basic: yes, carryon_fee: 0}   # Jet2 includes a 10kg cabin bag
+BY:  {name: TUI Airways,    carryon_in_basic: yes, carryon_fee: 0}
+
+# ── Hybrid / legacy: cabin bag USUALLY included in cheapest fare ──
+BA:  {name: British Airways, carryon_in_basic: yes, carryon_fee: 0}
+AZ:  {name: ITA Airways,     carryon_in_basic: yes, carryon_fee: 0}
+LH:  {name: Lufthansa,       carryon_in_basic: yes, carryon_fee: 0}
+KL:  {name: KLM,             carryon_in_basic: yes, carryon_fee: 0}
+AF:  {name: Air France,      carryon_in_basic: yes, carryon_fee: 0}
+IB:  {name: Iberia,          carryon_in_basic: yes, carryon_fee: 0}
+EI:  {name: Aer Lingus,      carryon_in_basic: yes, carryon_fee: 0}
+TP:  {name: TAP Portugal,    carryon_in_basic: yes, carryon_fee: 0}
+SN:  {name: Brussels Airlines, carryon_in_basic: yes, carryon_fee: 0}
+LX:  {name: SWISS,           carryon_in_basic: yes, carryon_fee: 0}
+OS:  {name: Austrian,        carryon_in_basic: yes, carryon_fee: 0}

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aviator-flights"
+version = "1.0.0"
+description = "Honest direct-flight price comparison across dates and nearby airports, straight from Google Flights."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Edoardo Pirani" }]
+keywords = ["flights", "travel", "google-flights", "price-comparison", "cli"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "fast-flights>=3.0",
+    "PyYAML>=6.0",
+    "python-dotenv>=1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/edoardopirani/aviator"
+Issues = "https://github.com/edoardopirani/aviator/issues"
+
+[project.scripts]
+aviator = "aviator.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/aviator"]

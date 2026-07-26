@@ -1,0 +1,43 @@
+# EXTRA ground time + cost to reach each airport from a given home location.
+#
+# This is what makes alternative-airport fares honest: a £20-cheaper fare from an
+# airport 90 minutes further away isn't actually cheaper. Aviator adds `cost` to the
+# fare to produce the "Adjusted" column, and surfaces `minutes` so you can judge
+# whether the saving is worth the hassle.
+#
+# Keyed by --home value, then by airport IATA code:
+#   minutes — EXTRA door-to-gate travel time vs. just going to your usual airport
+#   cost    — rough return-trip ground cost in your --currency (train/coach/fuel+parking)
+#   note    — how you'd actually get there
+#
+# ── THE ENTRIES BELOW ARE EXAMPLES. ADD YOUR OWN. ──
+# Run `aviator --init-config` to get an editable copy at ~/.config/aviator/, add a
+# block for where you live, then pass `--home <YourLocation>`. Without a matching
+# entry ground costs count as 0 and the comparison is fare-only — it still works,
+# it's just less honest about alternative airports.
+#
+# Tune these to YOUR reality: driving vs. train changes both numbers, and a week of
+# airport parking can cost more than the fare difference you were chasing.
+
+Birmingham:
+  BHX: {minutes: 30,  cost: 8,  note: "home airport — short train/drive"}
+  EMA: {minutes: 60,  cost: 25, note: "East Midlands, ~50mi drive or coach"}
+  MAN: {minutes: 110, cost: 45, note: "Manchester, ~90mi — train or drive + week parking"}
+  BRS: {minutes: 100, cost: 40, note: "Bristol, ~90mi"}
+  LTN: {minutes: 120, cost: 35, note: "Luton, train via London or drive"}
+  STN: {minutes: 140, cost: 40, note: "Stansted, ~150mi"}
+  LHR: {minutes: 130, cost: 45, note: "Heathrow, train/coach or drive + parking"}
+
+London:
+  LHR: {minutes: 60,  cost: 15, note: "Heathrow — Piccadilly line / Elizabeth line"}
+  LGW: {minutes: 70,  cost: 25, note: "Gatwick — Thameslink / Gatwick Express"}
+  LCY: {minutes: 45,  cost: 10, note: "City — DLR, closest for east London"}
+  STN: {minutes: 90,  cost: 30, note: "Stansted — Express from Liverpool St"}
+  LTN: {minutes: 90,  cost: 28, note: "Luton — Thameslink + shuttle"}
+  SEN: {minutes: 100, cost: 30, note: "Southend — Greater Anglia"}
+
+Manchester:
+  MAN: {minutes: 25,  cost: 10, note: "home airport — tram or short drive"}
+  LPL: {minutes: 60,  cost: 20, note: "Liverpool John Lennon, ~35mi"}
+  LBA: {minutes: 80,  cost: 25, note: "Leeds Bradford, ~70mi"}
+  EMA: {minutes: 100, cost: 35, note: "East Midlands, ~90mi"}
